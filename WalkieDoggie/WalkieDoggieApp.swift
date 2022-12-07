@@ -2,7 +2,7 @@
 //  WalkieDoggieApp.swift
 //  WalkieDoggie
 //
-//  Created by GaetanoMiranda on 07/12/22.
+//  Created by Irina Deeva on 07/12/22.
 //
 
 import SwiftUI
