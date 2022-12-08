@@ -14,6 +14,17 @@ enum Sex {
     case male
 }
 
+let breeds = ["German Shepherd","Labrador","French Bulldog","Golden Retriever","Hybrid"]
+
+enum Breed {
+    case germanShepherd
+    case labrador
+    case frenchBulldog
+    case goldenRetriever
+    case borderCollie
+    case corgi
+}
+
 
 struct DogProfile {
     let id: UUID = UUID()
@@ -23,19 +34,13 @@ struct DogProfile {
     var description: String
     
     let sex: Sex
-//
-//    struct Coordinates: Hashable, Codable {
-//        var latitude: Double
-//        var longitude: Double
-//    }
-//
-//    private var coordinates: Coordinates
-//    var locationCoordinate: CLLocationCoordinate2D {
-//            CLLocationCoordinate2D(
-//                latitude: coordinates.latitude,
-//                longitude: coordinates.longitude)
-//        }
-//
+    let breed: Breed
+
+    var latitude: Double
+    var longitude: Double
 }
 
-var dogExample = DogProfile(name: "Luna", age: 2, pictures: ["dogExample1","dogExample2","dogExample3"], description: "I am very cute and i love running in the grass. my owner loves me so much and i am willing to meet you all. my favourite food is cat food even if i'm a dog", sex: Sex.male)
+
+var dogExample = DogProfile(name: "Luna", age: 2, pictures: ["dogExample1","dogExample2","dogExample3"], description: "I am very cute and i love running in the grass. my owner loves me so much and i am willing to meet you all. my favourite food is cat food even if i'm a dog", sex: Sex.male, breed: .borderCollie, latitude: 0.0, longitude: 0.0)
+
+var aria = DogProfile(name: "aria", age: 10, pictures: ["",""], description: "sss", sex: Sex.male, breed: Breed.goldenRetriever, latitude: 40.82669, longitude: 14.504204)

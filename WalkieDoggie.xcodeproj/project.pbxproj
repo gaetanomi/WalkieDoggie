@@ -12,6 +12,8 @@
 		BE66D3292940E10C00562FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE66D3282940E10C00562FCB /* Assets.xcassets */; };
 		BE66D32C2940E10C00562FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE66D32B2940E10C00562FCB /* Preview Assets.xcassets */; };
 		FA3DCE052940E41B00AB3C70 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DCE042940E41B00AB3C70 /* DogProfile.swift */; };
+		FA3DCE072940ED5700AB3C70 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DCE062940ED5700AB3C70 /* SettingsView.swift */; };
+		FA3DCE092940F97A00AB3C70 /* BreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DCE082940F97A00AB3C70 /* BreedsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		BE66D3282940E10C00562FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE66D32B2940E10C00562FCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA3DCE042940E41B00AB3C70 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
+		FA3DCE062940ED5700AB3C70 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FA3DCE082940F97A00AB3C70 /* BreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 				BE66D3242940E10B00562FCB /* WalkieDoggieApp.swift */,
 				BE66D3262940E10B00562FCB /* ContentView.swift */,
 				FA3DCE042940E41B00AB3C70 /* DogProfile.swift */,
+				FA3DCE062940ED5700AB3C70 /* SettingsView.swift */,
+				FA3DCE082940F97A00AB3C70 /* BreedsView.swift */,
 				BE66D3282940E10C00562FCB /* Assets.xcassets */,
 				BE66D32A2940E10C00562FCB /* Preview Content */,
 			);
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE66D3272940E10B00562FCB /* ContentView.swift in Sources */,
+				FA3DCE072940ED5700AB3C70 /* SettingsView.swift in Sources */,
+				FA3DCE092940F97A00AB3C70 /* BreedsView.swift in Sources */,
 				FA3DCE052940E41B00AB3C70 /* DogProfile.swift in Sources */,
 				BE66D3252940E10B00562FCB /* WalkieDoggieApp.swift in Sources */,
 			);
