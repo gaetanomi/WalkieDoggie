@@ -8,7 +8,6 @@
 import Foundation
 import CoreLocation
 
-
 enum Sex {
     case female
     case male
@@ -32,7 +31,6 @@ enum Breed {
     case pomeranian 
 }
 
-
 struct DogProfile {
     let id: UUID = UUID()
     var name: String
@@ -46,7 +44,6 @@ struct DogProfile {
     var latitude: Double
     var longitude: Double
 }
-
 
 var dogExample = DogProfile(name: "Luna", age: 2, pictures: ["dogExample1","dogExample2","dogExample3"], description: "I am very cute and i love running in the grass. my owner loves me so much and i am willing to meet you all. my favourite food is cat food even if i'm a dog", sex: Sex.male, breed: .borderCollie, latitude: 0.0, longitude: 0.0)
 
