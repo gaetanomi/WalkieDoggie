@@ -8,5 +8,5 @@
 import Foundation
 
 class ProfilesViewModel{
-    var dogsProfiles = [loki, leo, shakh, kiraQueen, ciri, altai, albus, lui]
+    var dogsProfiles = [leo, loki, shakh, kiraQueen, ciri, altai, albus, lui]
 }

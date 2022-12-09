@@ -10,6 +10,7 @@
 		BE588F0129428E20008D28BF /* ProfileStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F0029428E20008D28BF /* ProfileStack.swift */; };
 		BE588F0D29429516008D28BF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F0C29429516008D28BF /* DiscoveryView.swift */; };
 		BE588F0F29429569008D28BF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F0E29429569008D28BF /* ViewModel.swift */; };
+		BE588F1129431CC0008D28BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F1029431CC0008D28BF /* MainView.swift */; };
 		BE66D3252940E10B00562FCB /* WalkieDoggieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66D3242940E10B00562FCB /* WalkieDoggieApp.swift */; };
 		BE66D3272940E10B00562FCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66D3262940E10B00562FCB /* ContentView.swift */; };
 		BE66D3292940E10C00562FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE66D3282940E10C00562FCB /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		BE588F0029428E20008D28BF /* ProfileStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStack.swift; sourceTree = "<group>"; };
 		BE588F0C29429516008D28BF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		BE588F0E29429569008D28BF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		BE588F1029431CC0008D28BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BE66D3212940E10B00562FCB /* WalkieDoggie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkieDoggie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE66D3242940E10B00562FCB /* WalkieDoggieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkieDoggieApp.swift; sourceTree = "<group>"; };
 		BE66D3262940E10B00562FCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 				BE588F0029428E20008D28BF /* ProfileStack.swift */,
 				FA3DCE082940F97A00AB3C70 /* BreedsView.swift */,
 				BE588F0C29429516008D28BF /* DiscoveryView.swift */,
+				BE588F1029431CC0008D28BF /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE66D3272940E10B00562FCB /* ContentView.swift in Sources */,
+				BE588F1129431CC0008D28BF /* MainView.swift in Sources */,
 				BE588F0F29429569008D28BF /* ViewModel.swift in Sources */,
 				BE588F0D29429516008D28BF /* DiscoveryView.swift in Sources */,
 				FA3DCE072940ED5700AB3C70 /* SettingsView.swift in Sources */,
