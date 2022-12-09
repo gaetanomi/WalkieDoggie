@@ -12,17 +12,20 @@ import CoreLocation
 enum Sex {
     case female
     case male
+    case both
 }
 
-let breeds = ["German Shepherd","Labrador","French Bulldog","Golden Retriever","Hybrid"]
 
-enum Breed {
-    case germanShepherd
-    case labrador
-    case frenchBulldog
-    case goldenRetriever
-    case borderCollie
-    case corgi
+    enum Breed : String, CaseIterable, Identifiable {
+    
+    var id : String { UUID().uuidString }
+    
+    case germanShepherd = "German Shepherd"
+    case labrador = "Labrador"
+    case frenchBulldog = "French Bulldog"
+    case goldenRetriever = "Golden Retriever"
+    case borderCollie = "Border Collie"
+    case corgi = "Corgi"
 }
 
 
@@ -38,6 +41,10 @@ struct DogProfile {
 
     var latitude: Double
     var longitude: Double
+    
+    var sexPreference: Sex = Sex.both
+    var maxDistance: Double = 15_000 //meters?
+    var breedPreferences: [String] = ["","",""]
 }
 
 
