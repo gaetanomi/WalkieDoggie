@@ -11,7 +11,7 @@ import SwiftUI
 struct WalkieDoggieApp: App {
     var body: some Scene {
         WindowGroup {
-            SettingsView()
+            MainView()
         }
     }
 }

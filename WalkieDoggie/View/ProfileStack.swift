@@ -11,26 +11,32 @@ struct ProfileStack: View {
     var dogProfile: DogProfile
     @State private var pictureCount = 0
     @State var isMoreInfoViewPresented = false
+    var swipeMinDistance: Double = 10
+    var swipeMaxDistance: Double = 250
     
     var body: some View {
-        ZStack{
-            ImageProfile(picture: dogProfile.pictures[pictureCount])
-            DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
-            
-//            Button("Snow more") {
-//                isMoreInfoViewPresented = true
-//                    }
-//                    .sheet(isPresented: $isMoreInfoViewPresented) {
-//                        MoreInfoView(dogProfile: dogProfile)
-//                    }
-            
-        }.onTapGesture{
-            if pictureCount < (dogProfile.pictures.count - 1){
-                pictureCount += 1
-            }
+        GeometryReader { geometry in
+            ZStack{
+                ImageProfile(picture: dogProfile.pictures[pictureCount])
+                    .frame(width: geometry.size.width)
+                DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
+            }.gesture(
+                DragGesture().onEnded({ value in
+                    print(value.translation.width)
+                    if value.translation.width < 0 {
+                        if abs(value.translation.width) < swipeMaxDistance, abs(value.translation.width) > swipeMinDistance, pictureCount < (dogProfile.pictures.count - 1) {
+                            pictureCount += 1
+                        }
+                    }
+                    else if value.translation.width > 0 {
+                        if value.translation.width < swipeMaxDistance, value.translation.width > swipeMinDistance, pictureCount - 1 >= 0 {
+                            pictureCount -= 1
+                        }
+                    }
+                })
+            )
         }
     }
-        
 }
 
 
@@ -53,7 +59,7 @@ struct DataProfile: View{
                 Text(name + ",")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    
+                
                 Text("\(age) y.o.")
                     .font(.system(size: 20))
             }
@@ -79,39 +85,6 @@ struct ImageProfile: View{
             .edgesIgnoringSafeArea(.top)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 struct ProfileStack_Previews: PreviewProvider {
