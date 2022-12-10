@@ -7,7 +7,16 @@
 
 import SwiftUI
 
-struct ProfileStack: View {
+var body: some View {
+    ScrollView {
+        VStack(alignment: .leading) {
+            ForEach(0..<100) {
+                Text("Row \($0)")
+            }
+        }
+    }
+}
+/* struct ProfileStack: View {
     var dogProfile: DogProfile
     @State private var pictureCount = 0
     @State var isMoreInfoViewPresented = false
@@ -31,7 +40,7 @@ struct ProfileStack: View {
         }
     }
         
-}
+} */
 
 
 struct MoreInfoView: View {
