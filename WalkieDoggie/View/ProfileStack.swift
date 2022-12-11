@@ -15,22 +15,32 @@ struct ProfileStack: View {
     var body: some View {
         ZStack{
             ImageProfile(picture: dogProfile.pictures[pictureCount])
-            DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
+                .onTapGesture { location in
+                    if location.x >  300
+                    {
+                        if pictureCount < (dogProfile.pictures.count - 1){
+                            pictureCount += 1
+                        }
+                    } else {
+                        if pictureCount > 0 {
+                            pictureCount -= 1
+                        }
+                    }
+                }
+                .overlay{
+                    DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
+                }
             
-//            Button("Snow more") {
-//                isMoreInfoViewPresented = true
-//                    }
-//                    .sheet(isPresented: $isMoreInfoViewPresented) {
-//                        MoreInfoView(dogProfile: dogProfile)
-//                    }
-            
-        }.onTapGesture{
-            if pictureCount < (dogProfile.pictures.count - 1){
-                pictureCount += 1
+            Button("info") {
+                isMoreInfoViewPresented = true
             }
+            .sheet(isPresented: $isMoreInfoViewPresented) {
+                MoreInfoView(dogProfile: dogProfile)
+            }
+            
+            
         }
     }
-        
 }
 
 
@@ -53,7 +63,7 @@ struct DataProfile: View{
                 Text(name + ",")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    
+                
                 Text("\(age) y.o.")
                     .font(.system(size: 20))
             }
@@ -63,7 +73,10 @@ struct DataProfile: View{
                     .font(.system(size: 17, weight: .semibold))
             }
         }
+        .padding(6)
         .foregroundColor(.white)
+        .background(Color(UIColor.gray))
+        .cornerRadius(10.0)
         .frame(maxWidth: 350, maxHeight: 650, alignment: .topLeading)
     }
 }

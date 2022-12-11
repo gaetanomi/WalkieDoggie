@@ -14,7 +14,11 @@ struct MainView: View {
                 .tabItem {
                     Label("Discovery", systemImage: "bolt.fill")
                 }
-
+            Text("Chat")
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Chat")
+                }
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
