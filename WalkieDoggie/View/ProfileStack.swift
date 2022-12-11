@@ -35,7 +35,7 @@ struct ProfileStack: View {
                 isMoreInfoViewPresented = true
             }
             .sheet(isPresented: $isMoreInfoViewPresented) {
-                MoreInfoView(dogProfile: dogProfile)
+                MoreInfoView(dogProfile: dogProfile, pictureCount: pictureCount)
             }
             
             
@@ -43,12 +43,22 @@ struct ProfileStack: View {
     }
 }
 
-
 struct MoreInfoView: View {
     var dogProfile: DogProfile
+    var pictureCount: Int
     
     var body: some View {
-        Text("More")
+        VStack{
+            Image(dogProfile.pictures[pictureCount])
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            VStack(alignment: .leading){
+                NameAgeDog(name: dogProfile.name, age: dogProfile.age)
+                BreedSexDog(breed: dogProfile.breed, sex: dogProfile.sex)
+                DistanceDog(distance: 2)
+                Text(dogProfile.description)
+            }
+        }
     }
 }
 
@@ -59,19 +69,8 @@ struct DataProfile: View{
     
     var body: some View{
         VStack(alignment: .leading){
-            HStack(alignment: .lastTextBaseline) {
-                Text(name + ",")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("\(age) y.o.")
-                    .font(.system(size: 20))
-            }
-            HStack{
-                Image(systemName: "paperplane")
-                Text("\(distance)km away")
-                    .font(.system(size: 17, weight: .semibold))
-            }
+            NameAgeDog(name: name, age: age)
+            DistanceDog(distance: distance)
         }
         .padding(6)
         .foregroundColor(.white)
@@ -82,6 +81,60 @@ struct DataProfile: View{
 }
 
 
+struct DistanceDog: View{
+    var distance: Int
+    
+    var body: some View{
+        HStack{
+            Image(systemName: "paperplane")
+            Text("\(distance)km away")
+                .font(.system(size: 17, weight: .semibold))
+        }
+    }
+}
+
+struct NameAgeDog: View{
+    var name: String
+    var age: Int
+    
+    var body: some View{
+        VStack(alignment: .leading){
+            HStack(alignment: .lastTextBaseline) {
+                Text(name + ",")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text("\(age) y.o.")
+                    .font(.system(size: 20))
+            }
+        }
+    }
+}
+
+struct BreedSexDog: View{
+    var breed: Breed
+    var sex: Sex
+    
+    var body: some View{
+        VStack(alignment: .leading){
+            HStack(alignment: .lastTextBaseline) {
+            //Text(breed) TO FIX
+                Text("breed ,")
+                    .font(.system(size: 28))
+                switch sex {
+                case .female:
+                    Image("femenine")
+                        .resizable()
+                        .frame(width: 15, height: 15, alignment: .top)
+                case .male:
+                    Image("masculine")
+                        .resizable()
+                        .frame(width: 15, height: 15, alignment: .top)
+                }
+            }
+        }
+    }
+}
+    
 struct ImageProfile: View{
     var picture: String
     
@@ -130,5 +183,11 @@ struct ImageProfile: View{
 struct ProfileStack_Previews: PreviewProvider {
     static var previews: some View {
         ProfileStack(dogProfile: dogExample)
+    }
+}
+
+struct MoreInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        MoreInfoView(dogProfile: dogExample, pictureCount: 0)
     }
 }

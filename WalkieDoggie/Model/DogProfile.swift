@@ -15,7 +15,7 @@ enum Sex {
 
 let breeds = ["German Shepherd","Labrador","French Bulldog","Golden Retriever","Hybrid"]
 
-enum Breed {
+enum Breed{
     case germanShepherd
     case labradorRetriever
     case frenchBulldog
