@@ -30,16 +30,25 @@ struct ProfileStack: View {
                 .overlay{
                     DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
                 }
-            Button("info") {
-                isMoreInfoViewPresented = true
-            }
-            .sheet(isPresented: $isMoreInfoViewPresented) {
-                MoreInfoView(dogProfile: dogProfile, pictureCount: pictureCount)
-            }
-            .frame(maxWidth: 350, maxHeight: 650, alignment: .bottomTrailing)
-            .foregroundColor(Color.black)
+            moreInfo
         }
     }
+    
+    var moreInfo: some View{
+        Button(action: {
+               isMoreInfoViewPresented = true
+        }){
+            Image(systemName: "info.circle")
+                .font(Font.system(.title))
+            
+        }
+           .sheet(isPresented: $isMoreInfoViewPresented) {
+               MoreInfoView(dogProfile: dogProfile, pictureCount: pictureCount)
+           }
+           .frame(maxWidth: 350, maxHeight: 650, alignment: .bottomTrailing)
+           .foregroundColor(Color.black)
+    }
+    
 }
 
 struct MoreInfoView: View {
@@ -47,15 +56,18 @@ struct MoreInfoView: View {
     var pictureCount: Int
     
     var body: some View {
-        VStack{
-            Image(dogProfile.pictures[pictureCount])
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            VStack(alignment: .leading){
-                NameAgeDog(name: dogProfile.name, age: dogProfile.age)
-                BreedSexDog(breed: dogProfile.breed, sex: dogProfile.sex)
-                DistanceDog(distance: 2)
-                Text(dogProfile.description)
+        ScrollView{
+            VStack{
+                Image(dogProfile.pictures[pictureCount])
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                VStack(alignment: .leading){
+                    NameAgeDog(name: dogProfile.name, age: dogProfile.age)
+                    BreedSexDog(breed: dogProfile.breed, sex: dogProfile.sex)
+                    DistanceDog(distance: 2)
+                    Text(dogProfile.description)
+                }
+                .padding()
             }
         }
     }
