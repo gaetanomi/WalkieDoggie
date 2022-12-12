@@ -5,11 +5,15 @@ import CoreLocation
 enum Sex {
     case female
     case male
+}
+
+enum SexPreferences{
+    case female
+    case male
     case both
 }
 
-
-    enum Breed : String, CaseIterable, Identifiable {
+enum Breed : String, CaseIterable, Identifiable {
     
     var id : String { UUID().uuidString }
     
@@ -43,7 +47,7 @@ struct DogProfile {
     var latitude: Double
     var longitude: Double
     
-    var sexPreference: Sex = Sex.both
+    var sexPreference: SexPreferences = SexPreferences.both
     var maxDistance: Double = 15_000 //meters?
     var breedPreferences: [String] = ["","",""]
 }

@@ -102,7 +102,7 @@ struct NameAgeDog: View{
                 Text(name + ",")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                Text("\(age) y.o.")
+                Text("\(age) years")
                     .font(.system(size: 20))
             }
         }
@@ -116,8 +116,7 @@ struct BreedSexDog: View{
     var body: some View{
         VStack(alignment: .leading){
             HStack(alignment: .lastTextBaseline) {
-            //Text(breed) TO FIX
-                Text("breed ,")
+                Text(breed.rawValue + ",")
                     .font(.system(size: 28))
                 switch sex {
                 case .female:
