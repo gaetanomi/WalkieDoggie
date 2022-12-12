@@ -63,8 +63,11 @@ struct MoreInfoView: View {
                     .aspectRatio(contentMode: .fill)
                 VStack(alignment: .leading){
                     NameAgeDog(name: dogProfile.name, age: dogProfile.age)
+                    Spacer(minLength: -3)
                     BreedSexDog(breed: dogProfile.breed, sex: dogProfile.sex)
+                    Spacer(minLength: 4)
                     DistanceDog(distance: 2)
+                    Spacer(minLength: 10)
                     Text(dogProfile.description)
                 }
                 .padding()
