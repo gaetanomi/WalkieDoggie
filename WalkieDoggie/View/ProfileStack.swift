@@ -109,7 +109,6 @@ struct NameAgeDog: View{
     var age: Int
     
     var body: some View{
-        VStack(alignment: .leading){
             HStack(alignment: .lastTextBaseline) {
                 Text(name + ",")
                     .font(.largeTitle)
@@ -117,7 +116,6 @@ struct NameAgeDog: View{
                 Text("\(age) years")
                     .font(.system(size: 20))
             }
-        }
     }
 }
 
@@ -126,7 +124,7 @@ struct BreedSexDog: View{
     var sex: Sex
     
     var body: some View{
-        VStack(alignment: .leading){
+
             HStack(alignment: .lastTextBaseline) {
                 Text(breed.rawValue + ",")
                     .font(.system(size: 28))
@@ -134,14 +132,13 @@ struct BreedSexDog: View{
                 case .female:
                     Image("femenine")
                         .resizable()
-                        .frame(width: 15, height: 15, alignment: .top)
+                        .frame(width: 15, height: 15)
                 case .male:
                     Image("masculine")
                         .resizable()
-                        .frame(width: 15, height: 15, alignment: .top)
+                        .frame(width: 15, height: 15)
                 }
             }
-        }
     }
 }
     
@@ -192,12 +189,12 @@ struct ImageProfile: View{
 
 struct ProfileStack_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileStack(dogProfile: dogExample)
+        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4])
     }
 }
 
 struct MoreInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreInfoView(dogProfile: dogExample, pictureCount: 0)
+        MoreInfoView(dogProfile: ProfilesViewModel().dogsProfiles[0], pictureCount: 0)
     }
 }

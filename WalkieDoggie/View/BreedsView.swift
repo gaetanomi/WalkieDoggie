@@ -14,7 +14,7 @@ struct BreedsView: View {
             HStack{
                 Text(breed.rawValue)
             }
-           
+            
         } .listStyle(.inset)
         
             .navigationTitle("Preferred Breeds")

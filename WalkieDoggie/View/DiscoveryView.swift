@@ -9,9 +9,31 @@ import SwiftUI
 
 struct DiscoveryView: View {
     var dogs = ProfilesViewModel().dogsProfiles
+    @State private var dogsCount = 0
+    var swipeMinDistance: Double = 10
+    var swipeMaxDistance: Double = 250
     
     var body: some View {
-        ProfileStack(dogProfile: dogs[0])
+        GeometryReader { geometry in
+            ZStack{
+                ProfileStack(dogProfile: dogs[dogsCount])
+                    .frame(width: geometry.size.width)
+            }.gesture(
+                DragGesture().onEnded({ value in
+                    print(value.translation.width)
+                    if value.translation.width < 0 {
+                        if abs(value.translation.width) < swipeMaxDistance, abs(value.translation.width) > swipeMinDistance, dogsCount < (dogs.count - 1) {
+                            dogsCount += 1
+                        }
+                    }
+                    else if value.translation.width > 0 {
+                        if value.translation.width < swipeMaxDistance, value.translation.width > swipeMinDistance, dogsCount - 1 >= 0 {
+                            dogsCount -= 1
+                        }
+                    }
+                })
+            )
+        }
     }
 }
 

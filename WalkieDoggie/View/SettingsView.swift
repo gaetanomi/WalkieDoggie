@@ -15,7 +15,7 @@ struct SettingsView: View {
     
     var body: some View {
         
-      
+        
         NavigationStack{
             VStack {
                 Image(dogExample.pictures[0])
@@ -50,25 +50,25 @@ struct SettingsView: View {
                         
                         
                     }
-                    header: {
-                        Text("Select preferred gender")
-                            
-                    }
+                header: {
+                    Text("Select preferred gender")
+                    
+                }
                     Section{
                         Slider(value: $distance, in: 0...5_000.00)
                         
                     }
-                    header: {
-                        Text("Search dogs in the range of")
-                            
-                    }
+                header: {
+                    Text("Search dogs in the range of")
                     
-
+                }
+                    
+                    
                     
                 } .listStyle(.inset)
                 
                 
-             
+                
             }
             .navigationTitle("Settings")
             .toolbar {
@@ -77,7 +77,7 @@ struct SettingsView: View {
                 }
             }
         }
-       
+        
     }
 }
 
