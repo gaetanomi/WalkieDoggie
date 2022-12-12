@@ -30,15 +30,14 @@ struct ProfileStack: View {
                 .overlay{
                     DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
                 }
-            
             Button("info") {
                 isMoreInfoViewPresented = true
             }
             .sheet(isPresented: $isMoreInfoViewPresented) {
                 MoreInfoView(dogProfile: dogProfile, pictureCount: pictureCount)
             }
-            
-            
+            .frame(maxWidth: 350, maxHeight: 650, alignment: .bottomTrailing)
+            .foregroundColor(Color.black)
         }
     }
 }
