@@ -116,8 +116,13 @@ struct NameAgeDog: View{
                 Text(name + ",")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                Text("\(age) years")
-                    .font(.system(size: 20))
+                if (age == 1){
+                    Text("\(age) year")
+                        .font(.system(size: 20))
+                } else {
+                    Text("\(age) years")
+                        .font(.system(size: 20))
+                }
             }
     }
 }
