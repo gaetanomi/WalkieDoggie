@@ -1,35 +1,34 @@
-//
-//  DogProfile.swift
-//  WalkieDoggie
-//
-//  Created by GaetanoMiranda on 07/12/22.
-//
-
 import Foundation
 import CoreLocation
+
 
 enum Sex {
     case female
     case male
+    case both
 }
 
-let breeds = ["German Shepherd","Labrador","French Bulldog","Golden Retriever","Hybrid"]
 
-enum Breed{
-    case germanShepherd
-    case labradorRetriever
-    case frenchBulldog
-    case goldenRetriever
-    case borderCollie
-    case corgi
-    case americanStaffordshireTerrier
-    case poodle
-    case theBankerDogHotosho
-    case hamstaff
-    case cardiganWelshCorgi
-    case alabai
-    case pomeranian 
+    enum Breed : String, CaseIterable, Identifiable {
+    
+    var id : String { UUID().uuidString }
+    
+    case germanShepherd = "German Shepherd"
+    case labrador = "Labrador"
+    case frenchBulldog = "French Bulldog"
+    case goldenRetriever = "Golden Retriever"
+    case borderCollie = "Border Collie"
+    case corgi = "Corgi"
+    case americanStaffordshireTerrier = "American Staffordshire Terrier"
+    case poodle = "poodle"
+    case theBankerDogHotosho = "the banker doghotsho"
+    case hamstaff = "Hamstaff"
+    case cardiganWelshCorgi = "Cardigan Welsh Corgi"
+    case alabai = "Alabai"
+    case labradorRetriever = "Labrador Retriever"
+    case pomeranian = "pomeranian"
 }
+
 
 struct DogProfile {
     let id: UUID = UUID()
@@ -43,9 +42,17 @@ struct DogProfile {
 
     var latitude: Double
     var longitude: Double
+    
+    var sexPreference: Sex = Sex.both
+    var maxDistance: Double = 15_000 //meters?
+    var breedPreferences: [String] = ["","",""]
 }
 
+
 var dogExample = DogProfile(name: "Luna", age: 2, pictures: ["dogExample1","dogExample2","dogExample3"], description: "I am very cute and i love running in the grass. my owner loves me so much and i am willing to meet you all. my favourite food is cat food even if i'm a dog", sex: Sex.male, breed: .borderCollie, latitude: 0.0, longitude: 0.0)
+
+var aria = DogProfile(name: "aria", age: 10, pictures: ["",""], description: "sss", sex: Sex.male, breed: Breed.goldenRetriever, latitude: 40.82669, longitude: 14.504204)
+
 
 var loki = DogProfile(name: "Loki", age: 2, pictures: ["Liza3-Loki-1","Liza3-Loki-2"], description: "Loves pancakes badly and helps to clean house to get them more.", sex: Sex.male, breed: Breed.americanStaffordshireTerrier, latitude: 40.82669, longitude: 14.504204)
 
