@@ -13,6 +13,9 @@ struct ProfileStack: View {
     @State private var pictureCount = 0
     @State var isMoreInfoViewPresented = false
     
+    var distance: String {
+        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
+    }
     
     var body: some View {
         ZStack{
@@ -30,7 +33,7 @@ struct ProfileStack: View {
                     }
                 }
                 .overlay{
-                    DataProfile(name: dogProfile.name, age: dogProfile.age, distance: "dd")
+                    DataProfile(name: dogProfile.name, age: dogProfile.age, distance: distance)
                 }
             moreInfo
         }
