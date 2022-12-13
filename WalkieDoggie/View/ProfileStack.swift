@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ProfileStack: View {
     var dogProfile: DogProfile
     @State private var pictureCount = 0
     @State var isMoreInfoViewPresented = false
+    
     
     var body: some View {
         ZStack{
@@ -28,7 +30,7 @@ struct ProfileStack: View {
                     }
                 }
                 .overlay{
-                    DataProfile(name: dogProfile.name, age: dogProfile.age, distance: 2)
+                    DataProfile(name: dogProfile.name, age: dogProfile.age, distance: "dd")
                 }
             moreInfo
         }
@@ -54,6 +56,9 @@ struct ProfileStack: View {
 struct MoreInfoView: View {
     var dogProfile: DogProfile
     var pictureCount: Int
+    var distance: String {
+        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
+    }
     
     var body: some View {
         ScrollView{
@@ -66,7 +71,7 @@ struct MoreInfoView: View {
                     Spacer(minLength: -3)
                     BreedSexDog(breed: dogProfile.breed, sex: dogProfile.sex)
                     Spacer(minLength: 4)
-                    DistanceDog(distance: 2)
+                    DistanceDog(distance: distance)
                     Spacer(minLength: 10)
                     Text(dogProfile.description)
                 }
@@ -79,7 +84,7 @@ struct MoreInfoView: View {
 struct DataProfile: View{
     var name: String
     var age: Int
-    var distance: Int
+    var distance: String
     
     var body: some View{
         VStack(alignment: .leading){
@@ -96,12 +101,13 @@ struct DataProfile: View{
 
 
 struct DistanceDog: View{
-    var distance: Int
+    
+    var distance: String
     
     var body: some View{
         HStack{
             Image(systemName: "paperplane")
-            Text("\(distance)km away")
+            Text("\(distance)")
                 .font(.system(size: 17, weight: .semibold))
         }
     }
