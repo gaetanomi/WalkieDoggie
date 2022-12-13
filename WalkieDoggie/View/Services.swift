@@ -15,7 +15,7 @@ class LocationService {
         let distance: CLLocationDistance = myLocation.distance(from: otherDogLocation)/1000
         
         let rounded = Int(round(distance))
-        return String(rounded)+"kms away"
+        return (rounded == 1 ? String(rounded)+"km away" : String(rounded)+"kms away")
         
     }
 }
