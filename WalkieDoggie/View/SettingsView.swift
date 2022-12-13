@@ -11,10 +11,11 @@ struct SettingsView: View {
     
     @State private var gender = "male"
     let genders = ["male", "female", "both"]
+    @State private var distance = 0.0
     
     var body: some View {
         
-      
+        
         NavigationStack{
             VStack {
                 Image(dogExample.pictures[0])
@@ -49,24 +50,25 @@ struct SettingsView: View {
                         
                         
                     }
-                    header: {
-                        Text("Select preferred gender")
-                            
-                    }
-                    Section{
-                        Slider(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(10)/*@END_MENU_TOKEN@*/)
-                    }
-                    header: {
-                        Text("Search dogs in the range of")
-                            
-                    }
+                header: {
+                    Text("Select preferred gender")
                     
-
+                }
+                    Section{
+                        Slider(value: $distance, in: 0...5_000.00)
+                        
+                    }
+                header: {
+                    Text("Search dogs in the range of")
+                    
+                }
+                    
+                    
                     
                 } .listStyle(.inset)
                 
                 
-             
+                
             }
             .navigationTitle("Settings")
             .toolbar {
@@ -75,7 +77,7 @@ struct SettingsView: View {
                 }
             }
         }
-       
+        
     }
 }
 

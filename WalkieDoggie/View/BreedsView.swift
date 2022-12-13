@@ -10,15 +10,16 @@ import SwiftUI
 struct BreedsView: View {
     var body: some View {
         
-        List(breeds, id:\.self){breed in
+        List(Breed.allCases){breed in
             HStack{
-                Text(breed)
+                Text(breed.rawValue)
             }
-           
+            
         } .listStyle(.inset)
-            .navigationTitle("Preferred Breeds")
         
+            .navigationTitle("Preferred Breeds")
     }
+    
 }
 
 struct BreedsView_Previews: PreviewProvider {
