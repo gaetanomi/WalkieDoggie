@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileStack: View {
     var dogProfile: DogProfile
-    @State private var pictureCount = 0
+    @Binding var pictureCount: Int
     @State var isMoreInfoViewPresented = false
     
     var body: some View {
@@ -195,11 +195,11 @@ struct ImageProfile: View{
 
 
 
-struct ProfileStack_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4])
-    }
-}
+//struct ProfileStack_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4], pictureCount: pictureCount)
+//    }
+//}
 
 struct MoreInfoView_Previews: PreviewProvider {
     static var previews: some View {
