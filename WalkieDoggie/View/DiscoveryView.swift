@@ -20,7 +20,7 @@ struct DiscoveryView: View {
                 ProfileStack(dogProfile: dogs[dogsCount], pictureCount: $pictureCount, frame: geometry.frame(in: .global))
                     
             }
-//            .padding([.horizontal, .bottom])
+            
             .gesture(
                 DragGesture().onEnded({ value in
                     print(value.translation.width)
@@ -38,7 +38,7 @@ struct DiscoveryView: View {
                     }
                 })
             )
-        }
+        }.padding([.horizontal, .bottom])
     }
 }
 
