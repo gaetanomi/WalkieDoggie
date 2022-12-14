@@ -16,6 +16,7 @@
 		BE66D3292940E10C00562FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE66D3282940E10C00562FCB /* Assets.xcassets */; };
 		BE66D32C2940E10C00562FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE66D32B2940E10C00562FCB /* Preview Assets.xcassets */; };
 		BEF25A3B294A264B004FFD8E /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF25A3A294A264B004FFD8E /* MoreInfoView.swift */; };
+		BEF25A3D294A2931004FFD8E /* DogProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF25A3C294A2931004FFD8E /* DogProfileInfoView.swift */; };
 		FA34E60E2948D0A400B42B6C /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34E60D2948D0A400B42B6C /* Services.swift */; };
 		FA3DCE052940E41B00AB3C70 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DCE042940E41B00AB3C70 /* DogProfile.swift */; };
 		FA3DCE072940ED5700AB3C70 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DCE062940ED5700AB3C70 /* SettingsView.swift */; };
@@ -33,6 +34,7 @@
 		BE66D3282940E10C00562FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE66D32B2940E10C00562FCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BEF25A3A294A264B004FFD8E /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		BEF25A3C294A2931004FFD8E /* DogProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfileInfoView.swift; sourceTree = "<group>"; };
 		FA34E60D2948D0A400B42B6C /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		FA3DCE042940E41B00AB3C70 /* DogProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		FA3DCE062940ED5700AB3C70 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				BE66D3262940E10B00562FCB /* ContentView.swift */,
 				FA3DCE062940ED5700AB3C70 /* SettingsView.swift */,
 				BE588F0029428E20008D28BF /* ProfileStack.swift */,
+				BEF25A3C294A2931004FFD8E /* DogProfileInfoView.swift */,
 				FA3DCE082940F97A00AB3C70 /* BreedsView.swift */,
 				BEF25A3A294A264B004FFD8E /* MoreInfoView.swift */,
 				BE588F0C29429516008D28BF /* DiscoveryView.swift */,
@@ -197,6 +200,7 @@
 				FA34E60E2948D0A400B42B6C /* Services.swift in Sources */,
 				FA3DCE092940F97A00AB3C70 /* BreedsView.swift in Sources */,
 				FA3DCE052940E41B00AB3C70 /* DogProfile.swift in Sources */,
+				BEF25A3D294A2931004FFD8E /* DogProfileInfoView.swift in Sources */,
 				BE588F0129428E20008D28BF /* ProfileStack.swift in Sources */,
 				BE66D3252940E10B00562FCB /* WalkieDoggieApp.swift in Sources */,
 			);
