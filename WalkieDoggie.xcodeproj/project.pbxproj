@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE585BE8294924750057366D /* MoreInfoModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE585BE7294924750057366D /* MoreInfoModal.swift */; };
 		BE588F0129428E20008D28BF /* ProfileStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F0029428E20008D28BF /* ProfileStack.swift */; };
 		BE588F0D29429516008D28BF /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F0C29429516008D28BF /* DiscoveryView.swift */; };
 		BE588F0F29429569008D28BF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE588F0E29429569008D28BF /* ViewModel.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE585BE7294924750057366D /* MoreInfoModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoModal.swift; sourceTree = "<group>"; };
 		BE588F0029428E20008D28BF /* ProfileStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStack.swift; sourceTree = "<group>"; };
 		BE588F0C29429516008D28BF /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryView.swift; sourceTree = "<group>"; };
 		BE588F0E29429569008D28BF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 				BE66D3262940E10B00562FCB /* ContentView.swift */,
 				FA3DCE062940ED5700AB3C70 /* SettingsView.swift */,
 				BE588F0029428E20008D28BF /* ProfileStack.swift */,
+				BE585BE7294924750057366D /* MoreInfoModal.swift */,
 				FA3DCE082940F97A00AB3C70 /* BreedsView.swift */,
 				BE588F0C29429516008D28BF /* DiscoveryView.swift */,
 				BE588F1029431CC0008D28BF /* MainView.swift */,
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE66D3272940E10B00562FCB /* ContentView.swift in Sources */,
+				BE585BE8294924750057366D /* MoreInfoModal.swift in Sources */,
 				BE588F1129431CC0008D28BF /* MainView.swift in Sources */,
 				BE588F0F29429569008D28BF /* ViewModel.swift in Sources */,
 				BE588F0D29429516008D28BF /* DiscoveryView.swift in Sources */,

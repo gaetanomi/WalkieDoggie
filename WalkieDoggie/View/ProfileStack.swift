@@ -12,16 +12,18 @@ struct ProfileStack: View {
     var dogProfile: DogProfile
     @Binding var pictureCount: Int
     @State var isMoreInfoViewPresented = false
+    @Binding var offset: CGFloat
+    var frame: CGRect
     
     var distance: String {
         return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
     }
     
     var body: some View {
-        ZStack{
-            ImageProfile(picture: dogProfile.pictures[pictureCount])
+        ZStack (alignment: Alignment(horizontal: .center, vertical: .bottom)){
+            ImageProfile(picture: dogProfile.pictures[pictureCount], frame: frame)
                 .onTapGesture { location in
-                    if location.x >  300
+                    if location.x > frame.width/2
                     {
                         if pictureCount < (dogProfile.pictures.count - 1){
                             pictureCount += 1
@@ -32,56 +34,82 @@ struct ProfileStack: View {
                         }
                     }
                 }
-                .overlay{
-                    DataProfile(name: dogProfile.name, age: dogProfile.age, distance: distance)
+            
+            LinearGradient(gradient: .init(colors: [Color.black.opacity(0), Color.black.opacity(0.4)]), startPoint: .center, endPoint: .bottom)
+            
+            VStack(spacing: 15){
+
+                HStack{
+                    
+                    VStack(alignment: .leading, spacing: 12){
+                        NameAgeDog(name: dogProfile.name, age: dogProfile.age)
+                        
+                        DistanceDog(distance: distance)
+
+                        
+                    }.foregroundColor(.white)
+                    Spacer(minLength: 0)
                 }
+                
+            
+                
+                HStack(spacing: 35){
+                    Spacer(minLength: 0)
+                    
+                    Button(action: {
+                        withAnimation(Animation.easeIn(duration: 0.8)){
+                            
+                            offset = -500
+                            
+                        }
+                    }){
+                        Image(systemName: "xmark")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding(20)
+                            .background(.red)
+                            .clipShape(Circle())
+                    }
+                    Button(action: {
+                        withAnimation(Animation.easeIn(duration: 0.8)){
+                            
+                            offset = 500
+                            
+                        }
+                    }){
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding(20)
+                            .background(.green)
+                            .clipShape(Circle())
+                    }
+                    Spacer(minLength: 0)
+                }
+            }
+            .padding()
+            
             moreInfo
         }
+        .offset(x: offset)
+        .cornerRadius(20)
     }
     
     var moreInfo: some View{
         Button(action: {
-               isMoreInfoViewPresented = true
+            isMoreInfoViewPresented = true
         }){
             Image(systemName: "info.circle")
                 .font(Font.system(.title))
             
         }
-           .sheet(isPresented: $isMoreInfoViewPresented) {
-               MoreInfoView(dogProfile: dogProfile, pictureCount: pictureCount)
-           }
-           .frame(maxWidth: 350, maxHeight: 650, alignment: .bottomTrailing)
-           .foregroundColor(Color.black)
-    }
-    
-}
-
-struct MoreInfoView: View {
-    var dogProfile: DogProfile
-    var pictureCount: Int
-    var distance: String {
-        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
-    }
-    
-    var body: some View {
-        ScrollView{
-            VStack{
-                Image(dogProfile.pictures[pictureCount])
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                VStack(alignment: .leading){
-                    NameAgeDog(name: dogProfile.name, age: dogProfile.age)
-                    Spacer(minLength: -3)
-                    BreedSexDog(breed: dogProfile.breed, sex: dogProfile.sex)
-                    Spacer(minLength: 4)
-                    DistanceDog(distance: distance)
-                    Spacer(minLength: 10)
-                    Text(dogProfile.description)
-                }
-                .padding()
-            }
+        .sheet(isPresented: $isMoreInfoViewPresented) {
+            MoreInfoView(dogProfile: dogProfile, pictureCount: pictureCount)
         }
+        .frame(maxWidth: frame.maxX - 50 , maxHeight: frame.maxY - 50, alignment: .bottomTrailing)
+        .foregroundColor(Color.black)
     }
+    
 }
 
 struct DataProfile: View{
@@ -90,18 +118,13 @@ struct DataProfile: View{
     var distance: String
     
     var body: some View{
-        VStack(alignment: .leading){
+        VStack(spacing: 12){
             NameAgeDog(name: name, age: age)
             DistanceDog(distance: distance)
         }
-        .padding(6)
         .foregroundColor(.white)
-        .background(Color(UIColor.gray))
-        .cornerRadius(10.0)
-        .frame(maxWidth: 350, maxHeight: 650, alignment: .topLeading)
     }
 }
-
 
 struct DistanceDog: View{
     
@@ -121,18 +144,18 @@ struct NameAgeDog: View{
     var age: Int
     
     var body: some View{
-            HStack(alignment: .lastTextBaseline) {
-                Text(name + ",")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                if (age == 1){
-                    Text("\(age) year")
-                        .font(.system(size: 20))
-                } else {
-                    Text("\(age) years")
-                        .font(.system(size: 20))
-                }
+        HStack(alignment: .lastTextBaseline) {
+            Text(name + ",")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            if (age == 1){
+                Text("\(age) year")
+                    .font(.system(size: 20))
+            } else {
+                Text("\(age) years")
+                    .font(.system(size: 20))
             }
+        }
     }
 }
 
@@ -141,32 +164,33 @@ struct BreedSexDog: View{
     var sex: Sex
     
     var body: some View{
-
-            HStack(alignment: .lastTextBaseline) {
-                Text(breed.rawValue + ",")
-                    .font(.system(size: 28))
-                switch sex {
-                case .female:
-                    Image("femenine")
-                        .resizable()
-                        .frame(width: 15, height: 15)
-                case .male:
-                    Image("masculine")
-                        .resizable()
-                        .frame(width: 15, height: 15)
-                }
+        
+        HStack(alignment: .lastTextBaseline) {
+            Text(breed.rawValue + ",")
+                .font(.system(size: 28))
+            switch sex {
+            case .female:
+                Image("femenine")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+            case .male:
+                Image("masculine")
+                    .resizable()
+                    .frame(width: 15, height: 15)
             }
+        }
     }
 }
-    
+
 struct ImageProfile: View{
     var picture: String
+    var frame: CGRect
     
     var body: some View{
         Image(picture)
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .edgesIgnoringSafeArea(.top)
+            .frame(width: frame.width, height: frame.height)
     }
 }
 
@@ -205,13 +229,10 @@ struct ImageProfile: View{
 
 
 //struct ProfileStack_Previews: PreviewProvider {
+////    @State var pictureCount = 0
+//    
 //    static var previews: some View {
-//        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4], pictureCount: pictureCount)
+//        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4], pictureCount: .constant(0))
 //    }
 //}
 
-struct MoreInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoreInfoView(dogProfile: ProfilesViewModel().dogsProfiles[0], pictureCount: 0)
-    }
-}

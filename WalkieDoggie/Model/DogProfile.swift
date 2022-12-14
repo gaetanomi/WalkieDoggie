@@ -34,7 +34,7 @@ enum Breed : String, CaseIterable, Identifiable {
 }
 
 
-struct DogProfile {
+struct DogProfile: Identifiable{
     let id: UUID = UUID()
     var name: String
     var age: Int
