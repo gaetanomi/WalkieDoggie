@@ -21,18 +21,7 @@ struct ProfileStack: View {
     var body: some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .bottom)){
             ImageProfile(picture: dogProfile.pictures[pictureCount], frame: frame)
-                .onTapGesture { location in
-                    if location.x > frame.width/2
-                    {
-                        if pictureCount < (dogProfile.pictures.count - 1){
-                            pictureCount += 1
-                        }
-                    } else {
-                        if pictureCount > 0 {
-                            pictureCount -= 1
-                        }
-                    }
-                }
+                
             
             LinearGradient(gradient: .init(colors: [Color.black.opacity(0), Color.black.opacity(0.4)]), startPoint: .center, endPoint: .bottom)
 
@@ -46,6 +35,18 @@ struct ProfileStack: View {
             moreInfo
         }
         .cornerRadius(20)
+        .onTapGesture { location in
+            if location.x > frame.width/2
+            {
+                if pictureCount < (dogProfile.pictures.count - 1){
+                    pictureCount += 1
+                }
+            } else {
+                if pictureCount > 0 {
+                    pictureCount -= 1
+                }
+            }
+        }
     }
     
     var moreInfo: some View{
