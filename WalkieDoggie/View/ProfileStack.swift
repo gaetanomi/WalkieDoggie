@@ -12,14 +12,16 @@ struct ProfileStack: View {
     var dogProfile: DogProfile
     @Binding var pictureCount: Int
     @State var isMoreInfoViewPresented = false
+    var frame: CGRect
     
     var distance: String {
         return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
     }
     
     var body: some View {
-        ZStack{
-            ImageProfile(picture: dogProfile.pictures[pictureCount])
+        ZStack (alignment: Alignment(horizontal: .center, vertical: .bottom)){
+//        ZStack{
+            ImageProfile(picture: dogProfile.pictures[pictureCount], frame: frame)
                 .onTapGesture { location in
                     if location.x >  300
                     {
@@ -32,11 +34,14 @@ struct ProfileStack: View {
                         }
                     }
                 }
+//
                 .overlay{
                     DataProfile(name: dogProfile.name, age: dogProfile.age, distance: distance)
                 }
             moreInfo
         }
+        .cornerRadius(20)
+//        .padding()
     }
     
     var moreInfo: some View{
@@ -161,13 +166,15 @@ struct BreedSexDog: View{
     
 struct ImageProfile: View{
     var picture: String
-    
-    var body: some View{
-        Image(picture)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .edgesIgnoringSafeArea(.top)
-    }
+    var frame: CGRect
+        
+        var body: some View{
+            Image(picture)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: frame.width, height: frame.height)
+                
+        }
 }
 
 
@@ -203,10 +210,12 @@ struct ImageProfile: View{
 
 
 
-
+//
 //struct ProfileStack_Previews: PreviewProvider {
+//    @State static var pictureCount = 0
+//    
 //    static var previews: some View {
-//        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4], pictureCount: pictureCount)
+//        ProfileStack(dogProfile: ProfilesViewModel().dogsProfiles[4], pictureCount: $pictureCount, frame: <#CGRect#>)
 //    }
 //}
 

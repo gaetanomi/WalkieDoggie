@@ -17,9 +17,11 @@ struct DiscoveryView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                ProfileStack(dogProfile: dogs[dogsCount], pictureCount: $pictureCount)
-                    .frame(width: geometry.size.width)
-            }.gesture(
+                ProfileStack(dogProfile: dogs[dogsCount], pictureCount: $pictureCount, frame: geometry.frame(in: .global))
+                    
+            }
+//            .padding([.horizontal, .bottom])
+            .gesture(
                 DragGesture().onEnded({ value in
                     print(value.translation.width)
                     if value.translation.width < 0 {
