@@ -49,7 +49,29 @@ struct DiscoveryView: View {
                     ProfileStack(dogProfile: profile, pictureCount: $pictureCount, offset: $offset, frame: geometry.frame(in: .global))
                 }
                 
-            }
+            }.gesture(
+                DragGesture()
+                    .onChanged({ value in
+                        
+                        withAnimation(.default){
+                            offset = value.translation.width
+                        }
+                    })
+                
+                    .onEnded({value in
+                        
+                        withAnimation(Animation.easeIn){
+                            if offset > 150{
+                                offset = 500
+                            }
+                            else if offset < -150{
+                                offset = -500
+                            } else{
+                                offset = 0
+                            }
+                        }
+                    })
+            )
             
         }
         .padding([.horizontal, .bottom])

@@ -35,6 +35,29 @@ struct ProfileStack: View {
                     }
                 }
             
+            ZStack(alignment: Alignment(horizontal: .center, vertical: .top)){
+                (offset > 0 ? Color.green: Color.red)
+                    .opacity(offset != 0 ? 0.7:0)
+                
+                HStack{
+                    if offset < 0 {
+                     Spacer(minLength: 0)
+                    }
+                    Text(offset == 0 ? "" : (offset > 0 ? "Liked" : "Rejected"))
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.top,25)
+                        .padding(.horizontal)
+                    
+                    if offset > 0 {
+                     Spacer(minLength: 0)
+                    }
+                }
+                
+            }
+            
+            
             LinearGradient(gradient: .init(colors: [Color.black.opacity(0), Color.black.opacity(0.4)]), startPoint: .center, endPoint: .bottom)
             
             VStack(spacing: 15){
@@ -94,6 +117,8 @@ struct ProfileStack: View {
         .cornerRadius(20)
         .offset(x: offset)
         .rotationEffect(.init(degrees: offset == 0 ? 0 : (offset > 0 ? 12 : -12)))
+        
+        
     }
     
     var moreInfo: some View{
