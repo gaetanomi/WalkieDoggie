@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct DiscoveryView: View {
-    var dogs = ProfilesViewModel().dogsProfiles
+    
+    @StateObject var vm = ProfilesViewModel()
+    
+//var dogs = ProfilesViewModel().filterByDistance(originalArray: ProfilesViewModel().dogsProfiles, maxdistance: SettingsVM().distance)
     @State private var dogsCount = 0
     @State var pictureCount = 0
     var swipeMinDistance: Double = 10
@@ -17,13 +20,13 @@ struct DiscoveryView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                ProfileStack(dogProfile: dogs[dogsCount], pictureCount: $pictureCount)
+                ProfileStack(dogProfile: vm.filteredDogs[dogsCount], pictureCount: $pictureCount)
                     .frame(width: geometry.size.width)
             }.gesture(
                 DragGesture().onEnded({ value in
                     print(value.translation.width)
                     if value.translation.width < 0 {
-                        if abs(value.translation.width) < swipeMaxDistance, abs(value.translation.width) > swipeMinDistance, dogsCount < (dogs.count - 1) {
+                        if abs(value.translation.width) < swipeMaxDistance, abs(value.translation.width) > swipeMinDistance, dogsCount < (vm.filteredDogs.count - 1) {
                             dogsCount += 1
                             pictureCount = 0
                         }

@@ -34,7 +34,7 @@ enum Breed : String, CaseIterable, Identifiable {
 }
 
 
-struct DogProfile {
+struct DogProfile: Equatable {
     let id: UUID = UUID()
     var name: String
     var age: Int
@@ -48,8 +48,11 @@ struct DogProfile {
     var longitude: Double
     
     var sexPreference: SexPreferences = SexPreferences.both
-    var maxDistance: Double = 15_000 //meters?
+    var maxDistance: Double = 3 //km
     var breedPreferences: [String] = ["","",""]
+    var distanceFromMe: Int {
+        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: self.latitude, longitude: self.longitude)).1
+    }
 }
 
 

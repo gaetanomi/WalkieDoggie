@@ -14,7 +14,7 @@ struct ProfileStack: View {
     @State var isMoreInfoViewPresented = false
     
     var distance: String {
-        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
+        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude)).0
     }
     
     var body: some View {
@@ -60,7 +60,7 @@ struct MoreInfoView: View {
     var dogProfile: DogProfile
     var pictureCount: Int
     var distance: String {
-        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude))
+        return LocationService().distanceCalculation(otherDogLocation: CLLocation(latitude: dogProfile.latitude, longitude: dogProfile.longitude)).0
     }
     
     var body: some View {

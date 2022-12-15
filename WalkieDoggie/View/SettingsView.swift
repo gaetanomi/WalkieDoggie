@@ -11,7 +11,8 @@ struct SettingsView: View {
     
     @State private var gender = "male"
     let genders = ["male", "female", "both"]
-    @State private var distance = 0.0
+    
+    @StateObject var profileVM = ProfilesViewModel()
     
     var body: some View {
         
@@ -55,7 +56,10 @@ struct SettingsView: View {
                     
                 }
                     Section{
-                        Slider(value: $distance, in: 0...5_000.00)
+                        Slider(value: $profileVM.distance, in: 0.0...10.0, minimumValueLabel: Text("0"), maximumValueLabel: Text("10"), label: {})
+                      //  Stepper(value: $settingsVM.distance, in: 0...20) {
+                            Text("\(profileVM.distance)")
+                        
                         
                     }
                 header: {
