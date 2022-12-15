@@ -91,8 +91,9 @@ struct ProfileStack: View {
             
             moreInfo
         }
-        .offset(x: offset)
         .cornerRadius(20)
+        .offset(x: offset)
+        .rotationEffect(.init(degrees: offset == 0 ? 0 : (offset > 0 ? 12 : -12)))
     }
     
     var moreInfo: some View{
